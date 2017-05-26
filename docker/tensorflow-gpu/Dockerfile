@@ -47,5 +47,9 @@ RUN conda install -y numpy scipy seaborn pymongo scipy pandas jupyter pillow req
 RUN pip install celery tensorflow-gpu keras
 
 # ENTRYPOINT [ "/usr/bin/tini", "--" ]
+WORKDIR /home
+
+RUN echo "jupyter notebook --allow-root --no-browser" > launch_notebook.sh
+RUN chmod u+rwx launch_notebook.sh
 
 #CMD ["jupyter", "notebook"]
