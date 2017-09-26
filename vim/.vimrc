@@ -15,11 +15,11 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tmhedberg/SimpylFold'
+Plugin 'ekalinin/Dockerfile.vim'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 " Plugin 'davidhalter/jedi-vim'
-
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
