@@ -17,7 +17,8 @@ Plugin 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tmhedberg/SimpylFold'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
-
+Plugin 'kien/ctrlp.vim'
+" Plugin 'davidhalter/jedi-vim'
 
 
 " All of your Plugins must be added before the following line
@@ -73,3 +74,6 @@ set hlsearch
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+" nerdtree
+map <C-n> :NERDTreeToggle<CR>"
