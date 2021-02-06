@@ -19,7 +19,9 @@ Plugin 'ekalinin/Dockerfile.vim'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'preservim/nerdcommenter'
+Plugin 'dense-analysis/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -39,7 +41,6 @@ au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
@@ -77,3 +78,16 @@ endif
 
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>"
+
+" f5 toggles buffer list with numbers. press the number for file
+:nnoremap <F5> :buffers<CR>:buffer<Space>
+
+" toggle nerdtree automatically
+" autocmd vimenter * NERDTree
+
+" To use the mapping, visually select the characters that are wanted in the search, then type // to search for the next occurrence of the selected text. Then press n to search for the next occurrence.
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+" map <leader>b <oimport ipdb; ipdb.set_trace()>
+map <F2> :echo 'Current time is ' . strftime('%c')<CR>
+nnoremap <leader>b <iasd>
