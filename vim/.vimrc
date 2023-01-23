@@ -1,5 +1,9 @@
+set shell=/bin/bash
 set nocompatible              " required
 filetype off                  " required
+
+let python_highlight_all=1
+syntax on
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -12,29 +16,43 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'vim-scripts/indentpython.vim'
 Plugin 'Lokaltog/powerline' , {'rtp': 'powerline/bindings/vim/'}
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'ekalinin/Dockerfile.vim'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'preservim/nerdcommenter'
+" Plugin 'zchee/deoplete-jedi'
 Plugin 'dense-analysis/ale'
+Plugin 'ekalinin/Dockerfile.vim'
+" Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
+Plugin 'preservim/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" ctrl p
+" let g:ctrlp_working_path_mode=''
+
+" export FZF_DEFAULT_COMMAND='ag --ignore "unused-code/*" -g ""'
+"nnoremap <C-p> :<C-u>FZF<CR>
+nnoremap <C-p> :<C-u>Files<CR>
+" let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co - exclude-standard', 'find %s -type f']
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\vunused-code\/',
+"   \ 'link': 'peritus',
+"   \ }
+set wildignore=*.pyc,*.pkl
+
 "The former line ensures that the autocomplete window goes away when you’re done with it, and the latter defines a shortcut for goto definition.
 " let g:ycm_autoclose_preview_window_after_completion=1
 " My leader key is mapped to space, so space-g will goto definition of whatever I’m currently on. Helpful when exploring new code.
 " map <>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-
-let python_highlight_all=1
-syntax on
 
 
 au BufNewFile,BufRead *.py
@@ -44,6 +62,16 @@ au BufNewFile,BufRead *.py
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
+
+au BufNewFile,BufRead *.go
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set autoindent |
+    \ set fileformat=unix |
+
+let g:go_fmt_command = "gofmt"
+" let g:go_fmt_autosave = 0
 
 " au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
@@ -61,11 +89,11 @@ set nu
 
 set guifont=Inconsolata\ for\ Powerline:h15
 let g:Powerline_symbols = 'fancy'
-set encoding=utf-8
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
+let g:airline_powerline_fonts = 1
 
 set laststatus=2
 set hlsearch
@@ -89,5 +117,4 @@ map <C-n> :NERDTreeToggle<CR>"
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " map <leader>b <oimport ipdb; ipdb.set_trace()>
-map <F2> :echo 'Current time is ' . strftime('%c')<CR>
-nnoremap <leader>b <iasd>
+" map <F2> :echo 'Current time is ' . strftime('%c')<CR>
