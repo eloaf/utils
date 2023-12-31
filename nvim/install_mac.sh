@@ -18,3 +18,15 @@ else
     mkdir ~/.config/nvim/lua
 fi
 
+# Prerequisites
+brew install make
+brew install gcc
+brew install ripgrep
+brew install lua-language-server
+
+# https://github.com/neoclide/coc.nvim
+# curl -sL install-node.vercel.app/lts | bash  # fails...
+# curl -sL install-node.vercel.app/lts | sudo -E bash -  # works, https://github.com/nodesource/distributions/issues/1157
+# is this even necessary...
+
+brew install pyright
