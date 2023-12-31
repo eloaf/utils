@@ -26,7 +26,8 @@ brew install lua-language-server
 
 # https://github.com/neoclide/coc.nvim
 # curl -sL install-node.vercel.app/lts | bash  # fails...
-# curl -sL install-node.vercel.app/lts | sudo -E bash -  # works, https://github.com/nodesource/distributions/issues/1157
+curl -sL install-node.vercel.app/lts | sudo -E bash -  # works, https://github.com/nodesource/distributions/issues/1157
 # is this even necessary...
+# I think its necessary for github copilot
 
 brew install pyright
