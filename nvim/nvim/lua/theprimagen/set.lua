@@ -39,3 +39,5 @@ vim.g.mapleader = " "
 vim.opt.encoding = "utf8"
 
 -- Go check theprimeagen's video on this (nvim setup from scratch)
+-- :help index 
+-- TODO tabs?
