@@ -13,7 +13,6 @@ return {
     },
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
     config = function()
-        print("test")
         require("barbar").setup({})
         local map = vim.api.nvim_set_keymap
         local opts = { noremap = true, silent = true }

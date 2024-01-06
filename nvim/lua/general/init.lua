@@ -30,7 +30,7 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
--- vim.opt.termguicolors = true
+vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
@@ -49,17 +49,20 @@ vim.opt.encoding = "utf8"
 
 -- print("colors")
 
-function ColorMyPencils()
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
+-- function ColorMyPencils(color)
+-- 	vim.cmd.colorscheme(color)
+--
+-- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- end
+--
 -- ColorMyPencils("wildcharm")
 -- vim.cmd.colorscheme("wildcharm")
+-- vim.cmd.colorscheme("vim")
 
-vim.cmd [[colorscheme wildcharm]]
+-- vim.cmd [[colorscheme wildcharm]]
 
 -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- TODO: https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim
+-- shortcut for this!
