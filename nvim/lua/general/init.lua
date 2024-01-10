@@ -8,6 +8,8 @@ vim.cmd [[
   set number
   set numberwidth=1
 ]]
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 vim.opt.number = true
 
@@ -66,3 +68,51 @@ vim.opt.encoding = "utf8"
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 -- TODO: https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim
 -- shortcut for this!
+
+function Delete_blank_lines_in_visual_selection()
+    vim.cmd('\'<,\'>g/^$/d')
+end
+
+vim.api.nvim_set_keymap('v', '<leader>dl', '<Cmd>lua Delete_blank_lines_in_visual_selection()<CR>', { noremap = true, silent = true })
+
+-- function Delete_current_block()
+--     local bufnr = vim.api.nvim_get_current_buf()
+--     local cursor = vim.api.nvim_win_get_cursor(0)
+--     local cursor_row = cursor[1] - 1 -- Convert to 0-based index
+--
+--     print("Cursor row: " .. cursor_row) -- Debugging line
+--
+--     local parser = vim.treesitter.get_parser(bufnr)
+--     local tree = parser:parse()[1]
+--     local root = tree:root()
+--     local node = root:named_descendant_for_range(cursor_row, 0, cursor_row, -1)
+--
+--     -- Debugging information
+--     if node then
+--         print("Node type: " .. node:type())
+--     else
+--         print("No node found")
+--         return
+--     end
+--
+--     -- Find the smallest node that starts at the same line as the cursor
+--     while node and (node:start() ~= cursor_row or node:type() == 'comment') do
+--         node = node:parent()
+--         if node then
+--             print("Parent node type: " .. node:type())
+--         else
+--             print("Reached root node")
+--             return
+--         end
+--     end
+--
+--     local start_line, _, end_line, _ = node:range()
+--     -- Convert to 1-based index and adjust end_line
+--     start_line = start_line + 1
+--     end_line = end_line + 1
+--
+--     print("Deleting lines " .. start_line .. " to " .. end_line) -- Debugging line
+--     vim.api.nvim_buf_set_lines(bufnr, start_line, end_line, false, {})
+-- end
+--
+-- vim.api.nvim_set_keymap('n', '<leader>di', ':lua Delete_current_block()<CR>', {noremap = true, silent = true})
